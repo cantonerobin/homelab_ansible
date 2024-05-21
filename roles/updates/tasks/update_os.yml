@@ -1,0 +1,22 @@
+---
+- name: Update web servers
+  hosts: all
+  tasks:
+    - name: Show facts available on the system
+    ansible.builtin.debug:
+      var: ansible_facts
+
+    # - name: Upgrade all packages / RHEL
+    #   ansible.builtin.yum:
+    #     name: '*'
+    #     state: latest
+    #     autoremove: true
+    #   when: ansible_facts['os_family'] == "Debian"
+
+    # - name: Upgrade all packages / DEBIAN
+    #   ansible.builtin.apt:
+    #     name: "*"
+    #     state: latest
+    #     autoremove: yes
+    #     autoclean: yes
+    #   when: ansible_facts['os_family'] == "Alma"
