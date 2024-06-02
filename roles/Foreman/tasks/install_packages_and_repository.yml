@@ -1,0 +1,19 @@
+---
+- name: Setup Puppet and Foreman Repositories and Install Foreman Installer
+  hosts: foreman.cantone.net
+  become: yes
+  tasks:
+    - name: Enable Puppet's 7.x repository
+      yum:
+        name: https://yum.puppet.com/puppet7-release-el-9.noarch.rpm
+        state: present
+
+    - name: Enable the Foreman repositories
+      yum:
+        name: https://yum.theforeman.org/releases/3.10/el9/x86_64/foreman-release.rpm
+        state: present
+
+    - name: Install the Foreman Installer
+      yum:
+        name: foreman-installer
+        state: present
